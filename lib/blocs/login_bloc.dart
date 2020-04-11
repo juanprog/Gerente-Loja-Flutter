@@ -36,7 +36,6 @@ class LoginBloc extends BlocBase with LoginValidators {
           FirebaseAuth.instance.signOut();
           _stateController.add(LoginState.FAIL);
         }
-        FirebaseAuth.instance.signOut();
       } else {
         _stateController.add(LoginState.IDLE);
       }
@@ -50,7 +49,7 @@ class LoginBloc extends BlocBase with LoginValidators {
         .get()
         .then((doc) {
       if (doc.data != null) {
-        return null;
+        return true;
       } else {
         return false;
       }
