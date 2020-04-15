@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerenteloja/tabs/users_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -59,18 +60,20 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (page) {
-          setState(() {
-            _page = page;
-          });
-        },
-        children: [
-          Container(color: Colors.red),
-          Container(color: Colors.yellow),
-          Container(color: Colors.green),
-        ],
+      body: SafeArea(
+        child: PageView(
+          controller: _pageController,
+          onPageChanged: (page) {
+            setState(() {
+              _page = page;
+            });
+          },
+          children: [
+            UsersTab(),
+            Container(color: Colors.yellow),
+            Container(color: Colors.green),
+          ],
+        ),
       ),
     );
   }
