@@ -34,7 +34,7 @@ class UserBlock extends BlocBase {
   }
 
   void _subscribeToOrders(String uid) {
-    _firestore
+    _users[uid]["subscription"] = _firestore
         .collection("users")
         .document(uid)
         .collection("orders")
@@ -56,6 +56,10 @@ class UserBlock extends BlocBase {
 
       _usersController.add(_users.values.toList());
     });
+  }
+
+  void _unsubscribeToOrders(String uid) {
+    _users[uid]["subscription"].cancel();
   }
 
   @override
