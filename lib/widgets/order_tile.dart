@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gerenteloja/widgets/order_header.dart';
 
 class OrderTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: Card(
         child: ExpansionTile(
           title: Text(
@@ -17,6 +18,7 @@ class OrderTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  OrderHeader(),
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -32,7 +34,7 @@ class OrderTile extends StatelessWidget {
                     ],
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FlatButton(
                         onPressed: () {},
