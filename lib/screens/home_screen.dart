@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             SpeedDialChild(
-              child: Icon(Icons.arrow_downward, color: Colors.pinkAccent),
+              child: Icon(Icons.arrow_upward, color: Colors.pinkAccent),
               backgroundColor: Colors.white,
               label: "Concluídos Acima",
               labelStyle: TextStyle(fontSize: 14),
