@@ -8,6 +8,25 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      child: Card(
+        child: ExpansionTile(
+          leading: CircleAvatar(
+            backgroundImage: NetworkImage(
+              category.data["icon"],
+            ),
+            backgroundColor: Colors.transparent,
+          ),
+          title: Text(
+            category.data["title"],
+            style: TextStyle(
+              color: Colors.grey[850],
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
