@@ -37,6 +37,7 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[850],
       appBar: AppBar(
+        backgroundColor: Colors.pinkAccent,
         elevation: 0,
         title: Text("Criar Produto"),
         actions: <Widget>[
