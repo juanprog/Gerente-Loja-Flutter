@@ -28,7 +28,7 @@ class CategoryTile extends StatelessWidget {
           ),
           children: <Widget>[
             FutureBuilder<QuerySnapshot>(
-              future: category.reference.collection("items").getDocuments(),
+              future: category.reference.collection("itens").getDocuments(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) return Container();
                 return Column(
