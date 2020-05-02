@@ -48,7 +48,12 @@ class ImagesWidget extends FormField<List> {
                             onTap: () {
                               showModalBottomSheet(
                                 context: context,
-                                builder: (context) => ImageSourceSheet(),
+                                builder: (context) => ImageSourceSheet(
+                                  onImageSelected: (image) {
+                                    state.didChange(state.value..add(image));
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
                               );
                             },
                           ),
