@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gerenteloja/widgets/image_source_sheet.dart';
 
 class ImagesWidget extends FormField<List> {
   ImagesWidget({
+    BuildContext context,
     FormFieldSetter<List> onSaved,
     FormFieldValidator<List> validator,
     List initialValue,
@@ -43,7 +45,12 @@ class ImagesWidget extends FormField<List> {
                                   color: Colors.white),
                               color: Colors.white.withAlpha(50),
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) => ImageSourceSheet(),
+                              );
+                            },
                           ),
                         ),
                     ),
