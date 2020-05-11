@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenteloja/blocs/products_bloc.dart';
+import 'package:gerenteloja/validators/product_validator.dart';
 import 'package:gerenteloja/widgets/images_widget.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class ProductScreen extends StatefulWidget {
   _ProductScreenState createState() => _ProductScreenState(categoryId, product);
 }
 
-class _ProductScreenState extends State<ProductScreen> {
+class _ProductScreenState extends State<ProductScreen> with ProductValidator {
   final ProductBloc _productBloc;
 
   final _formKey = GlobalKey<FormState>();
@@ -48,7 +49,11 @@ class _ProductScreenState extends State<ProductScreen> {
           ),
           IconButton(
             icon: Icon(Icons.save),
-            onPressed: () {},
+            onPressed: () {
+              if (_formKey.currentState.validate()) {
+                _formKey.currentState.save();
+              }
+            },
           ),
         ],
       ),
@@ -71,23 +76,23 @@ class _ProductScreenState extends State<ProductScreen> {
                   ImagesWidget(
                     context: context,
                     initialValue: snapshot.data["images"],
-                    onSaved: (l) {},
-                    validator: (l) {},
+                    onSaved: _productBloc.saveImages,
+                    validator: validateImages,
                   ),
                   TextFormField(
                     initialValue: snapshot.data["title"],
                     style: _fieldStyle,
                     decoration: _buildDecoration("Título"),
-                    onSaved: (t) {},
-                    validator: (t) {},
+                    onSaved: _productBloc.saveTitle,
+                    validator: validateTitle,
                   ),
                   TextFormField(
                     initialValue: snapshot.data["description"],
                     style: _fieldStyle,
                     maxLines: 6,
                     decoration: _buildDecoration("Descrição"),
-                    onSaved: (t) {},
-                    validator: (t) {},
+                    onSaved: _productBloc.saveDescription,
+                    validator: validateDescription,
                   ),
                   TextFormField(
                     initialValue: snapshot.data["price"]?.toStringAsFixed(2),
@@ -95,8 +100,8 @@ class _ProductScreenState extends State<ProductScreen> {
                     decoration: _buildDecoration("Preço"),
                     keyboardType:
                         TextInputType.numberWithOptions(decimal: true),
-                    onSaved: (t) {},
-                    validator: (t) {},
+                    onSaved: _productBloc.savePrice,
+                    validator: validatePrice,
                   ),
                 ],
               );
